@@ -4,7 +4,7 @@
 # Annettuna on taulukko, jossa on kokonaislukuja satunnaisessa järjestyksessä.
 # Suunnittele algoritmi, joka etsii taulukon pienimmän alkion.
 #
-# Author afmansne https://github.com/r453
+# Author afmansne https://github.com/r453/ITKA201
 # Lisenssi CC0 (vapaasti käytettävä)
 
 def hae_pienin_alkio(taulukko):
