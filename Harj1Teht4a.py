@@ -16,7 +16,7 @@ taulukko = random.sample(range(1, 101), n)
 
 # Muodostetaan aliohjelma, jolle taulukko annetaan parametrina.
 def hae_pienin_alkio(taulukko):
-    if len(taulukko) == 0:
+    if len(taulukko) == 0:    # lisätty virheenkorjaus jos kutsutaan toisesta ohjelmasta ja taulukko on tyhjä
         raise ValueError("ERROR: Taulukko on tyhjä")
 
     pienin = taulukko[0]           # oletetaan ensimmäinen luku pienimmäksi
