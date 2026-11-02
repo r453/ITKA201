@@ -1,11 +1,18 @@
 #/usr/bin/python3
-# Tehtävä 4 (a) https://studyguide.jyu.fi/2026/en/courseunit/itka201/
+# Tehtävä 6 https://studyguide.jyu.fi/2026/en/courseunit/itka201/
 #
-# Annettuna on taulukko, jossa on kokonaislukuja satunnaisessa järjestyksessä.
-# Suunnittele algoritmi, joka etsii taulukon pienimmän alkion.
+# Tee ohjelma, joka toteuttaa Tehtävän 4 (a)-kohdan mukaisen algoritmin. 
+# Testaa ohjelman toimintaa jollakin taulukolla niin, että testitaulukko 
+# tulostetaan sekä taulukon pienimmän alkion. 
 #
 # Author afmansne https://github.com/r453/ITKA201
 # Lisenssi CC0 (vapaasti käytettävä)
+
+import random
+
+# Muodostetaan ensin taulukko, jossa on satunnaisia kokonaislukuja
+n = 15  # taulukon koko
+taulukko = random.sample(range(1, 101), n)
 
 def hae_pienin_alkio(taulukko):
     if len(taulukko) == 0:
@@ -18,5 +25,4 @@ def hae_pienin_alkio(taulukko):
     return pienin		   # kaikki tarkastettu, palautetaan pienin
 
 if __name__ == "__main__":
-    luvut = [7, 3, 9, -2, 15, 0, 4, 12]
-    print(f"Taulukon {luvut} pienin luku on {hae_pienin_alkio(luvut)}")
+    print(f"Taulukon {taulukko} pienin luku on {hae_pienin_alkio(taulukko)}")
