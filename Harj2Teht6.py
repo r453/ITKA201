@@ -64,6 +64,7 @@ if __name__ == "__main__":
     print(f"[DEBUG] Saatu funktiolta taulukko {taulukko}")# testikutsu
     tarkasta_taulukon_koko(taulukko)
     for m in m_values:
+        n=0
         n=tutki_jaollisuus(taulukko, m,n)
         if n == 1:
             print(f"Taulukon {taulukko} alkioista {n} on jaollinen luvulla {m}")
