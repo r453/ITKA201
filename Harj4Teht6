@@ -1,0 +1,108 @@
+#/usr/bin/python3
+# 
+# Tehtävä 6 https://tim.jyu.fi/view/kurssit/tie/itka201/2026s/demot/D4#kuva3
+#
+#                 25
+#              /     \
+#            15       27
+#          /   \       \
+#        12     20      30
+#          \   /  \    /
+#          13 18  21  28
+#    Kuva 1: Esimerkki binääripuusta
+#
+# Määritellään binääripuun solmut esimerkiksi seuraavasti:
+# 
+#  public class Solmu {
+#    public int key;
+#    public Solmu left;
+#    public Solmu right;
+#  }
+# Kirjoita ohjelma, jolla voidaan käydä läpi tällaisen binääripuun solmut 
+# esijärjestyksessä, sisäjärjestyksessä ja jälkijärjestyksessä. Muodosta 
+# binääripuu (vähintään 10 solmua) ja tulosta puun avainkenttien arvot jokaisessa
+# em. järjestyksessä.
+#
+# Tehtävän voi toteuttaa yllä mainitun Solmu-luokan toteuttamalla. Vaihtoehtoisesti
+# voi toteuttaa binääripuun taulukkorakenteen avulla kuten luennoilla esitettiin.
+# Testeissä riittää 10 alkion kokoisen binääripuun tarkastelu. Puun voi muodostaa 
+# "käsin" sijoittamalla solmujen kenttiin yksitellen sopivat arvot. Voit käyttää 
+# kuvan 1 mukaista binääripuuta.
+# Binääripuiden lisäys-, haku- tai poisto-operaatioita ei siis tarvitse toteuttaa.
+# Binääripuun läpikäynti on tarkoitus toteuttaa yleisesti: eli ohjelman tulee 
+# toimia oikein, vaikka binääripuun vaihtaisi toiseksi.
+# Testitulostuksiin riittävät tehtävänannossa mainituissa järjestyksissä olevat 
+# arvojen tulostamiset ja tekstinä tulostettu tieto siitä, mikä järjestys on 
+# missäkin tilanteessa kyseessä.
+#
+# Author afmansne https://github.com/r453/ITKA201
+# Lisenssi CC0 (vapaasti käytettävä)
+#
+# Käytetty apuja mm. https://www.geeksforgeeks.org/python/tree-traversal-techniques-in-python/
+#
+
+# Luokka noden kuvaamiseksi
+class Noodi:
+    def __init__(self, v):
+        self.key = v
+        self.left = None
+        self.right = None
+
+# Aliohjelmat eri järjestyksissä kutsumiseksi
+def printSisajarjestys(root):
+    if root:
+        # Mennaan rekursiivisesti vasemmalle
+        printSisajarjestys(root.left)
+        # Poimitaan arvo
+        print(root.key,end = " ")
+        # Mennaan rekursiivisesti oikealle
+        printSisajarjestys(root.right)
+
+def printEsijarjestys(node):
+    if node is None:
+        return
+    # Poimitaan arvo
+    print(node.key, end = " ")
+    # Mennaan rekursiivisesti vasemmalle
+    printEsijarjestys(node.left)
+    # Mennaan rekursiivisesti oikealle
+    printEsijarjestys(node.right)
+
+def printJalkijarjestys(node):
+    if node is None:
+        return
+    # Mennaan rekursiivisesti vasemmalle
+    printJalkijarjestys(node.left)
+    # Mennaan rekursiivisesti oikealle
+    printJalkijarjestys(node.right)
+    # Poimitaan arvo
+    print(node.key, end = " ")
+
+# Aliohjelma kovakoodatun puun luomiseksi tehtävänannon mukaisesti
+def teePuu():
+    root = Noodi(25)
+    root.left = Noodi(15)
+    root.left.left = Noodi(12)
+    root.left.right = Noodi(20)
+    root.left.left.right = Noodi(13)
+    root.left.right.left = Noodi(18)
+    root.left.right.right = Noodi(21)
+    root.right = Noodi(27)
+    root.right.right = Noodi(30)
+    root.right.right.left = Noodi(28)
+    return root
+
+if __name__ == "__main__":
+    root = teePuu()
+
+    print("Sisäjärjestys:", end=" ")
+    printSisajarjestys(root)
+    print()
+
+    print("Esijärjestys:", end=" ")
+    printEsijarjestys(root)
+    print()
+    
+    print("Jälkijärjestys:", end=" ")
+    printJalkijarjestys(root)
+    print()
